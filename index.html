@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>👽 RETRO ALIEN BLOG 👾 | Sector 51</title>
+  <meta property="og:title" content="Retro Alien Blog - Sector 51">
+  <meta property="og:description" content="Bitácora extraterrestre - Transmisiones desde el Sector 51">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 30%, #0a0f1a, #03060c);
+      font-family: 'Courier New', 'Share Tech Mono', 'Fira Code', monospace;
+      color: #b2f0ff;
+      padding: 1.5rem;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(0deg, rgba(0,255,65,0.03) 0px, rgba(0,255,65,0.03) 2px, transparent 2px, transparent 6px);
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(1);}
+      100% { opacity: 1; transform: scale(1.2);}
+    }
+
+    .blog-wrapper {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .alien-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+      border: 2px solid #5effbc;
+      border-radius: 50px;
+      padding: 1.2rem;
+      box-shadow: 0 0 20px #3eff9e55, inset 0 0 8px #71ffb3;
+    }
+
+    .alien-header h1 {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: #d3ffbe;
+      text-shadow: 0 0 5px #0f0, 0 0 12px #2eff7a, 0 0 20px #1eff00;
+      word-break: break-word;
+    }
+
+    .alien-header p {
+      font-family: 'Courier New', monospace;
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+      color: #b1ffcf;
+      background: #00000066;
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+    }
+
+    .blog-card {
+      background: #071013cc;
+      backdrop-filter: blur(5px);
+      border-radius: 2rem;
+      border: 2px solid #7affb9;
+      box-shadow: 0 0 25px #1eff7e55, inset 0 0 10px #17ff8b33;
+      overflow: hidden;
+    }
+
+    .admin-panel {
+      background: #03070ae0;
+      padding: 1rem 1.8rem;
+      border-bottom: 2px solid #62ffb0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .auth-area {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .status-badge {
+      background: #1e2a2f;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      color: #baf9d4;
+      border: 1px solid #5effb2;
+      letter-spacing: 0.5px;
+    }
+
+    .status-badge.admin-mode {
+      background: #3f0050;
+      color: #eaffb2;
+      text-shadow: 0 0 3px magenta;
+      border-color: #ff66cc;
+    }
+
+    .key-input {
+      background: #000000aa;
+      border: 1px solid #74ffb9;
+      padding: 0.5rem 1rem;
+      border-radius: 60px;
+      font-family: monospace;
+      color: #bef5d0;
+      outline: none;
+      width: 190px;
+    }
+
+    .key-input:focus {
+      border-color: #ff66cc;
+      box-shadow: 0 0 8px #ff44ee;
+    }
+
+    button {
+      background: #000000aa;
+      border: 1px solid #70ffb3;
+      padding: 0.45rem 1.2rem;
+      border-radius: 60px;
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 0.65rem;
+      color: #d0ffcf;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #0f2a1f;
+      transform: scale(0.96);
+      box-shadow: 0 0 8px #5effb0;
+      border-color: #ff66c0;
+    }
+
+    button.primary {
+      background: #49006e;
+      border-color: #ff6eff;
+      color: #fff5b0;
+      text-shadow: 0 0 3px violet;
+    }
+
+    button.danger {
+      border-color: #ff7b89;
+      color: #ffb7b0;
+    }
+
+    button.whatsapp {
+      background: #075e54;
+      border-color: #25d366;
+      color: #ffffff;
+      text-shadow: none;
+    }
+
+    button.whatsapp:hover {
+      background: #128c7e;
+      transform: scale(0.96);
+    }
+
+    .editor-area {
+      background: #010b0fe0;
+      padding: 1.5rem;
+      border-bottom: 2px solid #54ff9f;
+      display: none;
+      backdrop-filter: blur(8px);
+    }
+
+    .editor-area.visible {
+      display: block;
+    }
+
+    .form-group label {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 0.7rem;
+      display: block;
+      margin-bottom: 0.6rem;
+      color: #d3ffc7;
+      letter-spacing: 1px;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      background: #03070c;
+      border: 1px solid #7affae;
+      padding: 0.7rem;
+      border-radius: 1rem;
+      color: #cbffdb;
+      font-family: monospace;
+    }
+
+    .post-list {
+      padding: 1.8rem;
+    }
+
+    .blog-post {
+      background: #071f1ad9;
+      border-radius: 2rem;
+      margin-bottom: 2rem;
+      padding: 1.3rem;
+      border-left: 12px solid #7effb9;
+      box-shadow: 6px 6px 0px #1eff7040;
+      transition: 0.2s;
+      backdrop-filter: blur(2px);
+    }
+
+    .blog-post:hover {
+      border-left-color: #ff66dd;
+      transform: translateX(6px);
+      box-shadow: 10px 10px 0px #ff6eff40;
+    }
+
+    .post-title {
+      font-family: 'Courier New', monospace;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fdffbe;
+      text-shadow: 0 0 5px #55ff99;
+      margin-bottom: 0.5rem;
+      word-break: break-word;
+    }
+
+    .post-meta {
+      font-size: 0.7rem;
+      color: #97e5b5;
+      border-bottom: 1px dashed #7effb9;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .post-content {
+      line-height: 1.5;
+      font-size: 0.95rem;
+      color: #ceffdd;
+    }
+
+    .admin-post-actions {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.8rem;
+      justify-content: flex-end;
+    }
+
+    .btn-small {
+      padding: 0.2rem 0.8rem;
+      font-size: 0.6rem;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: #9adfbc;
+      text-shadow: 0 0 2px black;
+    }
+
+    .share-section {
+      margin-top: 1rem;
+      padding: 1rem 1.8rem;
+      background: #03070ae0;
+      border-top: 1px solid #62ffb0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #000000aa;
+      padding: 0.5rem 1.2rem;
+    }
+
+    @media (max-width: 650px) {
+      .alien-header h1 { font-size: 1rem; }
+      .post-title { font-size: 0.9rem; }
+      button { font-size: 0.5rem; }
+    }
+
+    .alien-emoji {
+      display: inline-block;
+      animation: float 3s infinite ease;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px);}
+      50% { transform: translateY(-5px);}
+      100% { transform: translateY(0px);}
+    }
+
+    .url-alert {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1eff00cc;
+      color: #000;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-family: monospace;
+      font-size: 0.7rem;
+      z-index: 10000;
+      backdrop-filter: blur(5px);
+      border: 1px solid white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars" id="starsContainer"></div>
+
+<div class="blog-wrapper">
+  <div class="alien-header">
+    <h1>🛸 👽 RETRO ALIEN ZINE 👾 🛸</h1>
+    <p>📡 TRANSMISIÓN PÚBLICA · SECTOR 51 · SÓLO EL COMANDANTE EDITA 🔐</p>
+  </div>
+
+  <div class="blog-card">
+    <div class="admin-panel">
+      <div class="auth-area">
+        <span class="status-badge" id="authStatusBadge">🔒 LECTOR TERRÍCOLA</span>
+        <input type="password" id="adminKeyInput" class="key-input" placeholder="🔑 CLAVE ALIEN" autocomplete="off">
+        <button id="unlockBtn">🚀 DESBLOQUEAR</button>
+        <button id="lockBtn" style="display:none;">👾 CERRAR NAVE</button>
+      </div>
+      <div class="auth-area">
+        <small class="alien-emoji">👽 ✨ solo el piloto conoce la frecuencia</small>
+      </div>
+    </div>
+
+    <div id="editorSection" class="editor-area">
+      <h3 style="font-family:'Courier New'; font-weight:bold; font-size:0.9rem; margin-bottom:1rem;">🖥️ CONSOLA DE EDICIÓN GALÁCTICA</h3>
+      <div class="form-group">
+        <label>📀 TÍTULO DE LA ENTRADA</label>
+        <input type="text" id="postTitle" placeholder="Ej: Avistamiento en la cordillera">
+      </div>
+      <div class="form-group">
+        <label>📡 MENSAJE EXTRATERRESTRE</label>
+        <textarea id="postContent" placeholder="Escribe tu bitácora..."></textarea>
+      </div>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <button id="createPostBtn" class="primary">🛸 PUBLICAR EN BITÁCORA</button>
+        <button id="cancelEditBtn">🌀 CANCELAR</button>
+      </div>
+      <div id="editFeedback" style="margin-top:0.8rem; font-size:0.7rem; color:#94ffb9;"></div>
+    </div>
+
+    <div id="postsContainer" class="post-list">
+      <div class="empty-message" style="text-align:center; padding:2rem;">👾 CARGANDO SEÑALES DEL COSMOS...</div>
+    </div>
+
+    <div class="share-section">
+      <button id="shareWhatsAppBtn" class="share-btn whatsapp">
+        📱 COMPARTIR EN WHATSAPP
+      </button>
+      <button id="copyLinkBtn" class="share-btn">
+        🔗 COPIAR ENLACE
+      </button>
+      <button id="viewUrlBtn" class="share-btn">
+        🌐 VER ENLACE ACTUAL
+      </button>
+    </div>
+  </div>
+  <footer>
+    🌌 BLOG PÚBLICO — Todos los terrícolas pueden leerlo desde cualquier dispositivo 🌍
+  </footer>
+</div>
+
+<script>
+  const SECRET_KEY = "AlienRetro2026";
+  const STORAGE_KEY = "alien_blog_posts";
+  const SESSION_AUTH = "alien_edit_mode";
+
+  let posts = [];
+  let isAdmin = false;
+  let editModeId = null;
+
+  const postsContainer = document.getElementById('postsContainer');
+  const editorSection = document.getElementById('editorSection');
+  const authStatusBadge = document.getElementById('authStatusBadge');
+  const unlockBtn = document.getElementById('unlockBtn');
+  const lockBtn = document.getElementById('lockBtn');
+  const adminKeyInput = document.getElementById('adminKeyInput');
+  const createPostBtn = document.getElementById('createPostBtn');
+  const cancelEditBtn = document.getElementById('cancelEditBtn');
+  const postTitleInput = document.getElementById('postTitle');
+  const postContentInput = document.getElementById('postContent');
+  const editFeedback = document.getElementById('editFeedback');
+  const shareWhatsAppBtn = document.getElementById('shareWhatsAppBtn');
+  const copyLinkBtn = document.getElementById('copyLinkBtn');
+  const viewUrlBtn = document.getElementById('viewUrlBtn');
+
+  function generateStars() {
+    const starsDiv = document.getElementById('starsContainer');
+    starsDiv.innerHTML = '';
+    for (let i = 0; i < 220; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const size = Math.random() * 3 + 1;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.animationDuration = `${Math.random() * 3 + 1}s`;
+      star.style.animationDelay = `${Math.random() * 5}s`;
+      starsDiv.appendChild(star);
+    }
+  }
+
+  function loadPosts() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      try {
+        posts = JSON.parse(stored);
+        if (!Array.isArray(posts)) posts = [];
+      } catch(e) { posts = []; }
+    }
+    if (!posts.length) {
+      posts = [
+        {
+          id: Date.now() + 100,
+          title: "🛸 BIENVENIDO A LA BASE ALIEN",
+          content: "Este sector es <strong>público</strong>. Cualquier terrícola puede leer nuestras bitácoras desde CUALQUIER DISPOSITIVO DEL MUNDO, pero solo el Comandante Galáctico (con la clave secreta) puede crear o editar mensajes. 👽<br>🔑 Clave: <em>AlienRetro2026</em><br><br>🌍 <strong>¡Esta página funciona online!</strong> Compártela por WhatsApp con el botón de abajo.",
+          date: new Date().toLocaleString() + " 🌙"
+        },
+        {
+          id: Date.now() + 200,
+          title: "📡 AVISTAMIENTO EN EL DESIERTO",
+          content: "Luces en formación de V, velocidad hipersónica. Señales de radio captadas en 1420 MHz. Posible contacto inminente. 🛸✨",
+          date: new Date().toLocaleString() + " 🛸"
+        }
+      ];
+      savePosts();
+    }
+  }
+
+  function savePosts() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    });
+  }
+
+  function renderBlog() {
+    if (!postsContainer) return;
+    if (posts.length === 0) {
+      postsContainer.innerHTML = `<div style="text-align:center; padding:2rem;">👽⛔ No hay transmisiones aún. El comandante puede desbloquear y escribir. ⛔👽</div>`;
+      return;
+    }
+    const sorted = [...posts].sort((a,b) => new Date(b.date) - new Date(a.date));
+    let html = '';
+    for (const post of sorted) {
+      html += `
+        <div class="blog-post" data-id="${post.id}">
+          <div class="post-title">${escapeHtml(post.title)}</div>
+          <div class="post-meta">
+            <span>🕰️ ${escapeHtml(post.date)}</span>
+            <span>👾 #cosmicwave</span>
+          </div>
+          <div class="post-content">${post.content || ''}</div>
+      `;
+      if (isAdmin) {
+        html += `
+          <div class="admin-post-actions">
+            <button class="edit-post-btn btn-small" data-id="${post.id}">✏️ EDITAR</button>
+            <button class="delete-post-btn btn-small danger" data-id="${post.id}">🗑️ BORRAR</button>
+          </div>
+        `;
+      }
+      html += `</div>`;
+    }
+    postsContainer.innerHTML = html;
+
+    if (isAdmin) {
+      document.querySelectorAll('.edit-post-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = parseInt(btn.getAttribute('data-id'));
+          startEditPost(id);
+        });
+      });
+      document.querySelectorAll('.delete-post-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = parseInt(btn.getAttribute('data-id'));
+          if (confirm('⚠️ ¿Borrar esta transmisión alien?')) {
+            deletePostById(id);
+          }
+        });
+      });
+    }
+  }
+
+  function startEditPost(id) {
+    const post = posts.find(p => p.id === id);
+    if (!post) return;
+    editModeId = id;
+    postTitleInput.value = post.title;
+    postContentInput.value = post.content;
+    createPostBtn.textContent = '👾 GUARDAR CAMBIOS';
+    editFeedback.innerHTML = `✍️ Editando: "${escapeHtml(post.title)}"`;
+    editorSection.classList.add('visible');
+    editorSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function deletePostById(id) {
+    posts = posts.filter(p => p.id !== id);
+    savePosts();
+    renderBlog();
+    if (editModeId === id) {
+      resetEditorForm();
+    }
+    showFloatingMessage('🚀 Entrada eliminada del cosmos', '#ff6ad5');
+  }
+
+  function resetEditorForm() {
+    postTitleInput.value = '';
+    postContentInput.value = '';
+    editModeId = null;
+    createPostBtn.textContent = '🛸 PUBLICAR NUEVA ENTRADA';
+    editFeedback.innerHTML = '';
+  }
+
+  function saveOrUpdatePost() {
+    if (!isAdmin) {
+      alert('No tienes la frecuencia de comandante.');
+      return;
+    }
+    const title = postTitleInput.value.trim();
+    let content = postContentInput.value.trim();
+    if (!title) {
+      editFeedback.innerHTML = '❌ El título es obligatorio, comandante.';
+      editFeedback.style.color = '#ff8888';
+      return;
+    }
+    if (!content) content = '(sin mensaje)';
+    if (editModeId !== null) {
+      const index = posts.findIndex(p => p.id === editModeId);
+      if (index !== -1) {
+        posts[index].title = title;
+        posts[index].content = content;
+        posts[index].date = new Date().toLocaleString() + ' 👽 editado';
+        savePosts();
+        editFeedback.innerHTML = '✔️ Transmisión actualizada.';
+        editFeedback.style.color = '#98ffb0';
+        resetEditorForm();
+        renderBlog();
+        setTimeout(() => editFeedback.innerHTML = '', 1800);
+      }
+    } else {
+      const newPost = {
+        id: Date.now(),
+        title: title,
+        content: content,
+        date: new Date().toLocaleString() + ' 🛸'
+      };
+      posts.unshift(newPost);
+      savePosts();
+      resetEditorForm();
+      renderBlog();
+      editFeedback.innerHTML = '🎉 ¡Nueva bitácora publicada! Todo el sector la ve.';
+      editFeedback.style.color = '#b5ffb0';
+      setTimeout(() => editFeedback.innerHTML = '', 2200);
+    }
+  }
+
+  function showFloatingMessage(msg, color) {
+    const div = document.createElement('div');
+    div.textContent = msg;
+    div.style.position = 'fixed';
+    div.style.bottom = '20px';
+    div.style.left = '50%';
+    div.style.transform = 'translateX(-50%)';
+    div.style.backgroundColor = color;
+    div.style.color = '#000';
+    div.style.fontFamily = 'monospace';
+    div.style.padding = '0.5rem 1.2rem';
+    div.style.borderRadius = '40px';
+    div.style.zIndex = '9999';
+    div.style.fontWeight = 'bold';
+    div.style.border = '2px solid white';
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 2000);
+  }
+
+  function getCurrentPageUrl() {
+    return window.location.href;
+  }
+
+  function getShareMessage() {
+    const title = document.querySelector('.alien-header h1')?.innerText || 'Retro Alien Blog';
+    const url = getCurrentPageUrl();
+    return `👽 *${title}* 👾\n\n📡 ¡Mensaje desde el Sector 51!\n\n🔗 ${url}\n\n🛸 Ven a leer las bitácoras alienígenas desde cualquier dispositivo.`;
+  }
+
+  function shareOnWhatsApp() {
+    const message = getShareMessage();
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    showFloatingMessage('📱 Abriendo WhatsApp para compartir...', '#25d366');
+  }
+
+  function copyLinkToClipboard() {
+    const url = getCurrentPageUrl();
+    navigator.clipboard.writeText(url).then(() => {
+      showFloatingMessage('🔗 ¡Enlace copiado! Compártelo en WhatsApp', '#5effbc');
+    }).catch(() => {
+      const textarea = document.createElement('textarea');
+      textarea.value = url;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      showFloatingMessage('🔗 Enlace copiado (método alternativo)', '#5effbc');
+    });
+  }
+
+  function showCurrentUrl() {
+    const url = getCurrentPageUrl();
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'url-alert';
+    alertDiv.innerHTML = `🌍 ${url}`;
+    document.body.appendChild(alertDiv);
+    setTimeout(() => alertDiv.remove(), 4000);
+    showFloatingMessage('🌐 URL actual mostrada abajo', '#1eff00');
+  }
+
+  function enableAdminMode() {
+    isAdmin = true;
+    sessionStorage.setItem(SESSION_AUTH, 'true');
+    authStatusBadge.textContent = '👾 COMANDANTE A BORDO · MODO EDICIÓN 👾';
+    authStatusBadge.classList.add('admin-mode');
+    unlockBtn.style.display = 'none';
+    lockBtn.style.display = 'inline-block';
+    adminKeyInput.disabled = true;
+    adminKeyInput.placeholder = '✅ ACCESO AUTORIZADO';
+    editorSection.classList.add('visible');
+    renderBlog();
+    showFloatingMessage('🔓 Has desbloqueado la consola alien. ¡Edita el blog!', '#45ffa3');
+  }
+
+  function disableAdminMode() {
+    isAdmin = false;
+    sessionStorage.removeItem(SESSION_AUTH);
+    authStatusBadge.textContent = '🔒 LECTOR TERRÍCOLA';
+    authStatusBadge.classList.remove('admin-mode');
+    unlockBtn.style.display = 'inline-block';
+    lockBtn.style.display = 'none';
+    adminKeyInput.disabled = false;
+    adminKeyInput.value = '';
+    adminKeyInput.placeholder = '🔑 CLAVE ALIEN';
+    editorSection.classList.remove('visible');
+    resetEditorForm();
+    renderBlog();
+    showFloatingMessage('🔒 Modo comandante cerrado. El blog sigue visible.', '#ffaa44');
+  }
+
+  function attemptUnlock() {
+    const entered = adminKeyInput.value.trim();
+    if (entered === SECRET_KEY) {
+      enableAdminMode();
+    } else {
+      alert('❌ CLAVE INCORRECTA. No eres el Comandante. 👽');
+      adminKeyInput.value = '';
+    }
+  }
+
+  function checkSession() {
+    if (sessionStorage.getItem(SESSION_AUTH) === 'true') {
+      enableAdminMode();
+    } else {
+      disableAdminMode();
+    }
+  }
+
+  function bindEvents() {
+    unlockBtn.addEventListener('click', attemptUnlock);
+    lockBtn.addEventListener('click', disableAdminMode);
+    createPostBtn.addEventListener('click', saveOrUpdatePost);
+    cancelEditBtn.addEventListener('click', () => {
+      if (isAdmin) resetEditorForm();
+      else alert('Sin autorización');
+    });
+    shareWhatsAppBtn.addEventListener('click', shareOnWhatsApp);
+    copyLinkBtn.addEventListener('click', copyLinkToClipboard);
+    viewUrlBtn.addEventListener('click', showCurrentUrl);
+  }
+
+  function init() {
+    generateStars();
+    loadPosts();
+    bindEvents();
+    checkSession();
+    renderBlog();
+    
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      setTimeout(() => {
+        showFloatingMessage('🌍 ¡Página ONLINE! Comparte este enlace por WhatsApp', '#25d366');
+      }, 1000);
+    }
+  }
+
+  init();
+</script>
+</body>
+</html>
