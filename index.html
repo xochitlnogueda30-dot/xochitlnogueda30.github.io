@@ -1,810 +1,595 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>👾 ALIEN Y2K BLOG ✨ | manic pixie outer space</title>
-  <style>
-    /* ===== ESTILO ALIEN Y2K BRILLANTE ===== */
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Comic+Neue:wght@400;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ALIEN Y2K + DINOSAURIOS 🦖👽 dal-n-nite // NANA!!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
+            font-family: 'Courier New', 'VT323', 'Lucida Console', monospace;
+            padding: 2rem 1rem;
+            color: #b3ffe0;
+        }
 
-    body {
-      min-height: 100vh;
-      background: #0a0015;
-      font-family: 'Comic Neue', 'VT323', monospace;
-      padding: 20px;
-      position: relative;
-      overflow-x: hidden;
-    }
+        /* Contenedor principal tipo ventana alien con huellas de dinosaurio */
+        .alien-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(6, 18, 22, 0.85);
+            backdrop-filter: blur(6px);
+            border: 3px solid #6effe0;
+            box-shadow: 0 0 30px rgba(110, 255, 224, 0.4), inset 0 0 10px rgba(0,255,200,0.2);
+            border-radius: 32px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        /* huellas de dinosaurio decorativas */
+        .alien-container::before {
+            content: "🦖 🦕 🦖 🦕 🦖";
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 2rem;
+            opacity: 0.1;
+            pointer-events: none;
+            white-space: nowrap;
+        }
 
-    .glitter-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      background: 
-        radial-gradient(ellipse at 30% 40%, #ff00cc33, #000000),
-        repeating-linear-gradient(45deg, #ff00ff11 0px, #ff00ff11 3px, #00ffff11 3px, #00ffff11 10px);
-      animation: cosmicDrift 12s infinite alternate;
-    }
+        /* header alien retro */
+        .alien-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            border-bottom: 2px dashed #8efff0;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.8rem;
+        }
+        .title-area h1 {
+            font-size: 2.8rem;
+            letter-spacing: 5px;
+            background: linear-gradient(135deg, #c0ffb0, #6effe0, #f0ffb0, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 5px #0affb0;
+            font-family: 'Impact', 'Courier New', monospace;
+        }
+        .title-area p {
+            font-size: 0.9rem;
+            color: #aaf0e0;
+        }
+        .online-status {
+            background: #0a1a1a;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            border: 1px solid #6effe0;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .blink {
+            animation: blink 1.2s step-end infinite;
+            color: #6affb0;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
 
-    @keyframes cosmicDrift {
-      0% { background-position: 0% 0%; filter: hue-rotate(0deg) brightness(1);}
-      100% { background-position: 100% 100%; filter: hue-rotate(20deg) brightness(1.1);}
-    }
-
-    .star-glitter {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .glitter-particle {
-      position: absolute;
-      background: radial-gradient(circle, #fff, #ff99ff, #00ffff);
-      border-radius: 50%;
-      opacity: 0;
-      animation: glitterFloat 3s infinite alternate;
-      box-shadow: 0 0 8px #ff66ff;
-    }
-
-    @keyframes glitterFloat {
-      0% { opacity: 0; transform: translateY(0px) scale(0.2) rotate(0deg);}
-      50% { opacity: 0.8; transform: translateY(-20px) scale(1.2) rotate(180deg);}
-      100% { opacity: 0.4; transform: translateY(20px) scale(0.8) rotate(360deg);}
-    }
-
-    .blog-container {
-      position: relative;
-      z-index: 20;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .alien-y2k-header {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(15px);
-      border: 3px solid #ff44ee;
-      border-radius: 80px;
-      padding: 2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 40px #ff44ff, inset 0 0 20px #ff88ff;
-      animation: borderPulse 1.5s infinite alternate;
-    }
-
-    @keyframes borderPulse {
-      0% { border-color: #ff44ee; box-shadow: 0 0 15px #ff44ee, inset 0 0 5px #ff88ff;}
-      100% { border-color: #00ffff; box-shadow: 0 0 50px #00ffff, 0 0 25px #ff66ff, inset 0 0 15px #ffccff;}
-    }
-
-    .alien-y2k-header h1 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 2rem;
-      background: linear-gradient(135deg, #ff99ff, #00ffff, #ff66cc, #ffff66);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 30px magenta;
-      letter-spacing: 3px;
-      animation: titleGlow 2s infinite;
-    }
-
-    @keyframes titleGlow {
-      0%, 100% { filter: drop-shadow(0 0 5px magenta);}
-      50% { filter: drop-shadow(0 0 20px cyan);}
-    }
-
-    .alien-y2k-header p {
-      font-family: 'VT323', monospace;
-      font-size: 1.2rem;
-      color: #ccffdd;
-      text-shadow: 0 0 8px #0f0;
-      margin-top: 12px;
-    }
-
-    .admin-bar {
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(12px);
-      padding: 15px 25px;
-      border-radius: 80px;
-      margin-bottom: 25px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid #ff88ff;
-      gap: 10px;
-    }
-
-    .status-badge {
-      background: #1a0025;
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.7rem;
-      color: #ffb3ff;
-      border: 1px solid #ff66cc;
-      transition: all 0.3s;
-    }
-
-    .status-badge.admin {
-      background: linear-gradient(135deg, #7700aa, #ff00aa);
-      color: #ffff99;
-      text-shadow: 0 0 10px yellow;
-      animation: adminGlow 1s infinite;
-    }
-
-    @keyframes adminGlow {
-      0%, 100% { box-shadow: 0 0 10px magenta;}
-      50% { box-shadow: 0 0 25px yellow;}
-    }
-
-    input, textarea, button {
-      font-family: 'Comic Neue', monospace;
-      background: rgba(0,0,0,0.85);
-      border: 2px solid #ff66cc;
-      border-radius: 50px;
-      padding: 8px 18px;
-      color: #d0ffd0;
-      transition: all 0.2s;
-    }
-
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: cyan;
-      box-shadow: 0 0 15px cyan;
-    }
-
-    button {
-      cursor: pointer;
-      transition: 0.15s linear;
-      background: linear-gradient(135deg, #2a0044, #440066);
-      font-weight: bold;
-    }
-
-    button:hover {
-      background: #ff44aa;
-      color: black;
-      box-shadow: 0 0 20px hotpink;
-      transform: scale(0.95);
-    }
-
-    .y2k-dashboard {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 25px;
-    }
-
-    .sidebar {
-      flex: 1.2;
-      min-width: 260px;
-    }
-
-    .main-area {
-      flex: 2.8;
-      min-width: 300px;
-    }
-
-    .glitter-card {
-      background: rgba(10, 0, 25, 0.8);
-      backdrop-filter: blur(12px);
-      border: 2px solid #ff88ff;
-      border-radius: 40px;
-      padding: 1.5rem;
-      margin-bottom: 1.8rem;
-      box-shadow: 0 0 25px #ff44cc88;
-      transition: all 0.3s;
-    }
-
-    .glitter-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 35px #ff66ff;
-    }
-
-    .glitter-card h3 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-      color: #ffccff;
-      text-shadow: 0 0 8px magenta;
-      border-left: 8px solid #0ff;
-      padding-left: 15px;
-    }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin: 15px 0;
-    }
-
-    .social-links a {
-      background: linear-gradient(135deg, #330044, #550077);
-      padding: 8px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      color: #ffccff;
-      border: 1px solid #ff88ff;
-      font-weight: bold;
-      transition: all 0.2s;
-    }
-
-    .social-links a:hover {
-      transform: scale(1.1);
-      background: #ff44aa;
-      color: black;
-      box-shadow: 0 0 15px magenta;
-    }
-
-    .music-player {
-      background: linear-gradient(135deg, #001122cc, #002244cc);
-    }
-
-    audio {
-      width: 100%;
-      border-radius: 60px;
-      margin: 10px 0;
-    }
-
-    .blog-post {
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(20, 0, 40, 0.7));
-      border-radius: 35px;
-      padding: 1.2rem;
-      margin-bottom: 1.5rem;
-      border-right: 5px solid #ff44ff;
-      border-left: 3px solid #0ff;
-      transition: all 0.3s;
-    }
-
-    .blog-post:hover {
-      transform: translateX(8px);
-      box-shadow: -5px 5px 20px rgba(255, 68, 255, 0.3);
-    }
-
-    .post-title {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 1rem;
-      color: #ffffbb;
-      margin-bottom: 8px;
-    }
-
-    .post-meta {
-      font-size: 0.7rem;
-      color: #aaffdd;
-      margin-bottom: 10px;
-    }
-
-    .post-content {
-      line-height: 1.4;
-      color: #e0d0ff;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 15px;
-      margin-top: 15px;
-    }
-
-    .gallery-item {
-      background: linear-gradient(135deg, #220033, #1a0025);
-      border-radius: 25px;
-      padding: 12px;
-      text-align: center;
-      border: 2px solid cyan;
-      transition: all 0.3s;
-      position: relative;
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.05) rotate(2deg);
-      box-shadow: 0 0 20px magenta;
-    }
-
-    .gallery-item img {
-      max-width: 100%;
-      border-radius: 20px;
-      margin-bottom: 8px;
-    }
-
-    .gallery-item span {
-      display: block;
-      font-size: 0.7rem;
-      color: #ffccff;
-      margin-top: 5px;
-    }
-
-    .fake-img {
-      font-size: 3.5rem;
-      background: #440066;
-      border-radius: 20px;
-      padding: 15px;
-      margin-bottom: 5px;
-    }
-
-    .visitor-counter {
-      background: #000000aa;
-      border-radius: 30px;
-      padding: 5px 15px;
-      text-align: center;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.7rem;
-      color: #ffccff;
-      margin-top: 10px;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      padding: 20px;
-      color: #ddbbff;
-      text-shadow: 0 0 8px magenta;
-      border-top: 2px dashed #ff88ff;
-    }
-
-    @media (max-width: 750px) {
-      .y2k-dashboard { flex-direction: column; }
-      .alien-y2k-header h1 { font-size: 1.2rem; }
-      .alien-y2k-header { padding: 1rem; }
-    }
-  </style>
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: rgba(0, 15, 20, 0.7);
+            border: 2px solid #2effd0;
+            border-radius: 28px;
+            padding: 1.2rem;
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+            box-shadow: 5px 5px 0px #00a08030;
+        }
+        .card:hover {
+            border-color: #f0ffb0;
+            box-shadow: 0 0 12px #aaffdd;
+        }
+        .card h2 {
+            font-size: 1.7rem;
+            border-left: 8px solid #6effe0;
+            padding-left: 12px;
+            margin-bottom: 1rem;
+            font-family: 'Impact', monospace;
+            letter-spacing: 2px;
+            color: #f0ffc0;
+        }
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        .tag {
+            background: #0e2a28;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            border: 1px solid #6effe0;
+        }
+        .friend-space {
+            background: #02100e;
+            border-radius: 24px;
+            padding: 0.8rem;
+            margin: 15px 0;
+        }
+        .friend-avatars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 15px 0;
+        }
+        .buddy {
+            background: #112a2a;
+            width: 70px;
+            text-align: center;
+            padding: 8px 0;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            border: 1px solid #aaffdd;
+        }
+        .btn-alien {
+            background: none;
+            border: 1px solid #6effe0;
+            color: #c3fff0;
+            padding: 6px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: monospace;
+            font-weight: bold;
+            transition: 0.2s;
+            font-size: 0.75rem;
+            margin-top: 8px;
+            margin-right: 6px;
+        }
+        .btn-alien:hover {
+            background: #6effe030;
+            box-shadow: 0 0 6px cyan;
+        }
+        .clock-gadget {
+            background: #010a0c;
+            text-align: center;
+            padding: 12px;
+            border-radius: 60px;
+            margin-bottom: 1.8rem;
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 6px;
+            border: 1px solid #6effe0;
+            box-shadow: 0 0 8px cyan;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .gallery-item {
+            background: #041f1f;
+            aspect-ratio: 1 / 1;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.3rem;
+            border: 2px solid #60ffc0;
+            transition: all 0.2s;
+            cursor: pointer;
+            color: #b5ffea;
+        }
+        .gallery-item:hover {
+            background: #2effc030;
+            transform: scale(0.96);
+        }
+        .blog-entry {
+            background: #021a18;
+            border-radius: 24px;
+            margin-bottom: 1rem;
+            padding: 0.9rem;
+            border-left: 6px solid #b0ffd0;
+        }
+        .entry-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #f0ffaa;
+        }
+        .entry-meta {
+            font-size: 0.7rem;
+            color: #7effdd;
+            margin: 5px 0;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            background: #0e2624;
+            padding: 10px 16px;
+            border-radius: 60px;
+            text-decoration: none;
+            color: #d0fff0;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #3effc0;
+            font-size: 0.8rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            opacity: 0.8;
+            border-top: 1px dashed #3affb0;
+            padding-top: 1rem;
+        }
+        hr {
+            border-color: #3effc0;
+            margin: 10px 0;
+        }
+        @media (max-width: 700px) {
+            .alien-container { padding: 1rem; }
+            .title-area h1 { font-size: 2rem; }
+            .clock-gadget { font-size: 1.3rem; }
+        }
+        .music-player {
+            background: #021c1a;
+            border-radius: 40px;
+            padding: 8px 12px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        audio {
+            width: 100%;
+            margin-top: 5px;
+            filter: hue-rotate(80deg);
+        }
+        .dino-sticker {
+            background: #1d3a2a;
+            border-radius: 30px;
+            padding: 4px 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            border: 1px solid #aaffaa;
+        }
+        .dino-fact {
+            background: #0e2a1f;
+            border-radius: 20px;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 0.75rem;
+        }
+    </style>
 </head>
 <body>
-<div class="glitter-bg"></div>
-<div class="star-glitter" id="glitterContainer"></div>
 
-<div class="blog-container">
-  <div class="alien-y2k-header">
-    <h1>👾 ALIEN Y2K ZINE 🛸✨💿</h1>
-    <p>⋆｡°✩ a market for the girls, gays & aliens ⋆ vintage ⋆ alt goodies ⋆ galaxy tattoos ⋆<br>
-    @manicpixiealien | she/they/alien | online now! 💫🌟🎀</p>
-    <div class="visitor-counter" id="visitorCounter">✨ VISITAS: 💖</div>
-  </div>
-
-  <div class="admin-bar">
-    <span id="authStatusBadge" class="status-badge">🔒 VISITANTE TERRÍCOLA</span>
-    <div style="display: flex; gap: 10px;">
-      <input type="password" id="secretKey" placeholder="🔑 clave alien y2k" style="width:160px;">
-      <button id="unlockBtn">🚀 DESBLOQUEAR</button>
-      <button id="lockBtn" style="display:none;">👾 CERRAR NAVE</button>
-    </div>
-  </div>
-
-  <div class="y2k-dashboard">
-    <div class="sidebar">
-      <div class="glitter-card">
-        <h3>📡 CONECTA CON LA NAVE</h3>
-        <div id="socialLinks" class="social-links"></div>
-        <div id="socialEditPanel" style="display:none; margin-top:15px;">
-          <input type="text" id="socialInput" placeholder="nombre:url, nombre2:url2" style="width:100%; margin-bottom:8px;">
-          <button id="saveSocialBtn">💾 guardar cambios</button>
+<div class="alien-container">
+    <div class="alien-header">
+        <div class="title-area">
+            <h1>👽 dal-n-nite ★ NANA!! 🦖</h1>
+            <p>“Don't be afraid to talk to me ;)” — 100% ANGEL // DINO ALIEN CORE</p>
         </div>
-      </div>
-
-      <div class="glitter-card music-player">
-        <h3>🎧 ALIEN MYSPACE JUKEBOX</h3>
-        <audio id="alienAudio" controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
-        <div class="playlist" style="font-size:0.75rem; margin-top:10px; text-align:center;">
-          ✨ y2k alien playlist: Britney, Kesha, 3OH!3, Lady Gaga ✨
+        <div class="online-status">
+            🟢 <span class="blink">ONLINE!</span> &nbsp;| LastLogin: <span id="lastLoginTime">--:--:--</span>
         </div>
-        <div id="musicAdmin" style="display:none; margin-top:12px;">
-          <input type="text" id="musicUrlInput" placeholder="🎵 URL de tu canción mp3" style="width:100%; margin-bottom:8px;">
-          <button id="updateMusicBtn">🔄 actualizar canción</button>
-        </div>
-      </div>
-
-      <div class="glitter-card">
-        <h3>⭐ TOP FINDS ⭐</h3>
-        <div>🛸 y2k purses · silk scarfs · alien jewelry · crochet · crystals · 90s tanks · galaxy dogs · baby tees</div>
-        <div style="margin-top:15px; padding:10px; background:#ff44aa22; border-radius:25px;">
-          📍 Alien Market:<br> 
-          🗓️ Saturday Jan 10th 11am-5pm<br>
-          📍 3366 Adams Ave San Diego, CA<br>
-          ✨ Free entry! 👽 kid friendly.
-        </div>
-        <div style="margin-top:12px; font-size:0.8rem; text-align:center;">
-          💫 "We are all made of star stuff" 💫
-        </div>
-      </div>
     </div>
 
-    <div class="main-area">
-      <div id="editorCard" class="glitter-card" style="display:none;">
-        <h3>✏️ ESCRIBIR BITÁCORA ALIEN</h3>
-        <input type="text" id="postTitle" placeholder="✨ título brillante ✨" style="width:100%; margin-bottom:10px;">
-        <textarea id="postContent" rows="4" placeholder="contenido... puedes usar &lt;strong&gt;html&lt;/strong&gt; para más estilo" style="width:100%; margin-bottom:10px;"></textarea>
-        <div style="display: flex; gap: 10px;">
-          <button id="createPostBtn">🛸 PUBLICAR</button>
-          <button id="cancelEditBtn">❌ cancelar</button>
-        </div>
-        <div id="editFeedback" style="font-size:0.75rem; margin-top:8px; color:#ff99ff;"></div>
-      </div>
-
-      <div class="glitter-card">
-        <h3>📓 DIARIO EXTRATERRESTRE</h3>
-        <div id="postsContainer">cargando señales cósmicas...</div>
-      </div>
-
-      <div class="glitter-card">
-        <h3>🖼️ GALERÍA COSMOGLITTER</h3>
-        <div id="galleryGrid" class="gallery-grid"></div>
-        <div id="galleryAdminPanel" style="display:none; margin-top:20px;">
-          <input type="text" id="newGalleryItem" placeholder="URL imagen o emoji 👾✨🛸" style="width:70%; margin-right:8px;">
-          <button id="addGalleryBtn">➕ agregar</button>
-        </div>
-      </div>
+    <div class="clock-gadget">
+        🛸 ⏱️ <span id="realTimeClock">--:--:--</span> 🦕🌙
     </div>
-  </div>
-  <footer>
-    ✨👾 ALIEN Y2K BLOG · todos pueden leer, solo el comandante galáctico edita · brillo infinito ✨🛸<br>
-    💿 Hecho con glitter y amor alienígena 💿
-  </footer>
+
+    <!-- PRIMERA FILA: BLOG ENTRIES + GALERIA + MUSICA -->
+    <div class="dashboard">
+        <!-- BLOG ENTRIES con dinosaurios -->
+        <div class="card">
+            <h2>📝 BLOG ENTRIES + DINO TALES</h2>
+            <div id="blogEntriesContainer">
+                <div class="blog-entry">
+                    <div class="entry-title">✨ ur prina hakim Luw U 3333 Loka 🦖✨</div>
+                    <div class="entry-meta">🛸 posted: 05/20/2024 — mood: interstellar shopping + jurassic</div>
+                    <div>👽 i met an alien dinosaur at the mall, gave me glowing fossils!! #Y2Kforever #DinoFriend</div>
+                </div>
+                <div class="blog-entry">
+                    <div class="entry-title">💖 ILB Here 4 U 27/7 8 333 "marie" 🦕</div>
+                    <div class="entry-meta">🌟 alien diary: 4 eva angel & dino vibes</div>
+                    <div>⭐ NANA!! IS LIKE 2000s AND MOBILING!! MY FAV THING IS LISTEN TO MUSIC AND HUG T-REX!! CRave ingredients 🦴</div>
+                </div>
+                <div class="blog-entry">
+                    <div class="entry-title">🚀 MONSTER HIGH + DINOSAUR TRAINER night 🚀</div>
+                    <div class="entry-meta">🍿 watching with my alien clones and raptor</div>
+                    <div>mean girls but make it galactic + jurassic park! don't be afraid to message my dino 🦖</div>
+                </div>
+            </div>
+            <button class="btn-alien" id="addEntryBtn">➕ new alien/dino entry</button>
+        </div>
+
+        <!-- GALERIA alien + DINOSAURIOS -->
+        <div class="card">
+            <h2>📸 GALERIA 👾🦕</h2>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item">👽🦖</div>
+                <div class="gallery-item">🌟🦕</div>
+                <div class="gallery-item">🎀🦴</div>
+                <div class="gallery-item">📼🐣</div>
+                <div class="gallery-item">💿🦕</div>
+                <div class="gallery-item">🐙🦖</div>
+                <div class="gallery-item">🧃🪐</div>
+                <div class="gallery-item">🎧🦕</div>
+                <div class="gallery-item">🍒🦖</div>
+                <div class="gallery-item">🪩🦴</div>
+            </div>
+            <p style="margin-top: 10px; font-size: 0.7rem;">★ alien selfies + dinosaur fossils ★ click to discover ★</p>
+            <button class="btn-alien" id="addGalleryPic">🎞️ add alien or dino sticker</button>
+        </div>
+
+        <!-- MUSICA ZONE + dino beats -->
+        <div class="card">
+            <h2>🎧 MUSIC ZONE (dino approved)</h2>
+            <div class="interests-list">
+                <span class="tag">🎤 Britney Spears</span>
+                <span class="tag">✨ Ayesha Erotica</span>
+                <span class="tag">⚡ Azealia Banks</span>
+                <span class="tag">💗 Kesha</span>
+                <span class="tag">🪩 Lady Gaga</span>
+                <span class="tag">🍬 Dino Rock</span>
+            </div>
+            <div class="music-player">
+                <span>🔊 ALIEN RADIO:</span>
+                <audio controls src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" style="max-width: 220px;"></audio>
+                <span class="playlist-note">🎶 * hyperpop / jurassic mix *</span>
+            </div>
+            <p><strong>🎤 fav tracks:</strong> "Toxic" (raptor remix) · "212" · "Poker Face" · "Walking with Dinosaurs"</p>
+            <div class="friend-space" style="margin-top: 8px;">
+                ⭐ <strong>NOW PLAYING:</strong> <span id="nowPlayingTrack">Britney - Oops!... I Did It Again (Galactic Version)</span>
+                <button class="btn-alien" id="randomTrackBtn">🔄 random track + dino roar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SEGUNDA FILA: REDES SOCIALES + INTERESTS + FRIEND SPACE + DINOSAURIO ZONE -->
+    <div class="dashboard">
+        <div class="card">
+            <h2>🌐 MY SOCIAL SPACE (dino friendly)</h2>
+            <div class="social-icons">
+                <a href="#" class="social-link">📸 INSTAGRAM @nana_dino</a>
+                <a href="#" class="social-link">🎵 TIKTOK @dino_n_nite</a>
+                <a href="#" class="social-link">🐦 X / DINOCORE</a>
+                <a href="#" class="social-link">👽 SPOTIFY jurassic playlist</a>
+                <a href="#" class="social-link">📧 dinomail@y2k.space</a>
+            </div>
+            <hr>
+            <div><strong>💬 msg me:</strong> Add to Friends ★ Send Message ★ Roar to Dino</div>
+            <button class="btn-alien" id="fakeAddFriend">➕ Add to Favorites</button>
+            <button class="btn-alien" id="fakeBlockUser">🚫 Block User</button>
+        </div>
+
+        <!-- INTERESTS con dinosaurios -->
+        <div class="card">
+            <h2>💚 INTERESTS // DINO VIBES</h2>
+            <div><strong>general + paleontology:</strong></div>
+            <div class="interests-list">
+                <span class="tag">🛸 MUSIC</span>
+                <span class="tag">🛍️ SHOPPING</span>
+                <span class="tag">🦖 T-REX</span>
+                <span class="tag">🍿 JURASSIC PARK</span>
+                <span class="tag">💰 FOSSILS</span>
+                <span class="tag">📚 CLASS 09</span>
+                <span class="tag">🎨 PINTEREST dino art</span>
+                <span class="tag">📺 ANIME + DINOS</span>
+                <span class="tag">👾 MONSTER HIGH</span>
+                <span class="tag">🦕 TRICERATOPS</span>
+            </div>
+            <div><strong>movies fav:</strong> Jurassic Park, Dinner in America, Mean Girls, The Land Before Time</div>
+            <div><strong>webs:</strong> <a href="#" id="fakeWebLink" style="color:#aaffdd;">https://www.youtube.com/watch?v=dino_roar</a> ( alien dino core )</div>
+            <div class="dino-fact">
+                🦖 <strong>FACT:</strong> Los dinosaurios y los aliens comparten el amor por los glitter fossils en Y2K.
+            </div>
+        </div>
+
+        <!-- FRIEND SPACE + DINO AMIGOS -->
+        <div class="card">
+            <h2>👥 FRIEND SPACE + DINO CREW</h2>
+            <div class="friend-avatars">
+                <div class="buddy">💖 Angel</div>
+                <div class="buddy">😈 soomobu</div>
+                <div class="buddy">🐱 Tazz!!!</div>
+                <div class="buddy">⭐ NANA!!</div>
+                <div class="buddy">🦖 Rex</div>
+                <div class="buddy">🦕 Trike</div>
+                <div class="buddy">✨ marie 333</div>
+            </div>
+            <p><strong>NANA!! has 131 friends + 30 dinosaurs.</strong> | <a href="#" id="viewAllFriends" style="color: #b0ffe0;">[view all]</a></p>
+            <div class="friend-space">
+                <strong>📝 My Top 10:</strong> 1. Angel 👼 2. Tazz 3. bratzz 4. T-Rex 5. clueless babe<br>
+                6. mosher 7. luvbyte 8. plazma 9. cherry 10. alienbaby
+            </div>
+            <div><strong>💬 Comments (2):</strong> "ur dinosaur is so cute" "NANA!! ily let's dig fossils together"</div>
+            <div class="comment-section" id="commentSection">
+                <input type="text" id="newCommentInput" placeholder="write alien or dino comment..." style="background:#021a1a; border:1px solid #6effe0; color:#b0ffe0; padding:5px; border-radius:40px; width:70%;">
+                <button class="btn-alien" id="addCommentBtn">➕ Add Comment</button>
+                <div id="dynamicComments" style="margin-top: 8px; font-size:0.75rem;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NUEVA SECCION: DINO ZONE completa con interactividad -->
+    <div class="card" style="margin-top: 0.5rem;">
+        <h2>🦕🦖 DINO ZONE 🦴💚</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+            <div style="flex:1;">
+                <p><strong>🐣 Dino Pet:</strong> <span id="dinoName">Spike</span> <button class="btn-alien" id="renameDinoBtn">✏️ rename dino</button></p>
+                <p><strong>🦴 Dino facts:</strong></p>
+                <div id="dinoFactBox" class="dino-fact">Los velociraptors tenían plumas y les encantaba el glitter alienígena.</div>
+                <button class="btn-alien" id="newDinoFactBtn">🦕 random dino fact</button>
+                <button class="btn-alien" id="dinoRoarBtn">🔊 make dino roar</button>
+            </div>
+            <div style="flex:1; text-align: center;">
+                <div style="font-size: 4rem; filter: drop-shadow(0 0 6px #aaffaa);" id="dinoEmoji">🦖</div>
+                <div class="dino-sticker" style="margin-top: 5px;">★ Dino friend level: INFINITE ★</div>
+                <button class="btn-alien" id="petDinoBtn">🐾 pet the dino</button>
+            </div>
+        </div>
+        <div class="interests-list" style="margin-top: 15px;">
+            <span class="tag">🦕 Jurassic Y2K</span>
+            <span class="tag">🦖 Alien Rex</span>
+            <span class="tag">💎 Fossil Aesthetic</span>
+            <span class="tag">🌿 DinoCore</span>
+        </div>
+    </div>
+
+    <!-- bloque extra -->
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-top: 1rem; gap: 10px;">
+        <div><span>📘 <strong>View My:</strong> Blog | Pics | Videos | Dino Diary</span></div>
+        <div><span>✨ <strong>dal-n-nite's blogs:</strong> about me: 100% Angel + Dino Lover</span></div>
+        <div><span>🤍 <strong>NANA!!'s Blurb:</strong> I CRAVE INGREDIENTS & FOSSILS except 18+</span></div>
+    </div>
+
+    <footer>
+        ⚡ Y2K ALIEN DINO BLOG | 2000s + Jurassic aesthetic | contact: 🌙 Add to Friends, send dino message ✨
+    </footer>
 </div>
 
 <script>
-  // ========== CONFIGURACIÓN ==========
-  const SECRET_CODE = "alienY2K2000s";
-
-  const POSTS_KEY = "alienY2k_posts_v2";
-  const SOCIAL_KEY = "alienY2k_social_v2";
-  const GALLERY_KEY = "alienY2k_gallery_v2";
-  const MUSIC_KEY = "alienY2k_music_v2";
-  const VISITOR_KEY = "alienY2k_visits";
-
-  let isAdmin = false;
-  let editModeId = null;
-  let posts = [];
-  let socialLinks = [];
-  let galleryItems = [];
-  let musicUrl = "";
-
-  // Contador de visitas
-  function updateVisitorCounter() {
-    let visits = localStorage.getItem(VISITOR_KEY);
-    if (!visits) {
-      visits = 1;
-    } else {
-      visits = parseInt(visits) + 1;
+    // ========== RELOJ ==========
+    function updateClock() {
+        const now = new Date();
+        let hours = now.getHours();
+        let minutes = now.getMinutes();
+        let seconds = now.getSeconds();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12 || 12;
+        const formattedTime = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')} ${ampm}`;
+        document.getElementById('realTimeClock').innerText = formattedTime;
     }
-    localStorage.setItem(VISITOR_KEY, visits);
-    const counterEl = document.getElementById('visitorCounter');
-    if (counterEl) {
-      counterEl.innerHTML = `✨ VISITAS: ${visits} 💖`;
-    }
-  }
+    setInterval(updateClock, 1000);
+    updateClock();
 
-  // Generar estrellas
-  function generateGlitter() {
-    const container = document.getElementById('glitterContainer');
-    for(let i = 0; i < 150; i++) {
-      const star = document.createElement('div');
-      star.classList.add('glitter-particle');
-      star.style.left = Math.random() * 100 + '%';
-      star.style.top = Math.random() * 100 + '%';
-      star.style.width = Math.random() * 6 + 2 + 'px';
-      star.style.height = star.style.width;
-      star.style.animationDelay = Math.random() * 4 + 's';
-      star.style.animationDuration = Math.random() * 2 + 1 + 's';
-      container.appendChild(star);
+    const lastLoginElem = document.getElementById('lastLoginTime');
+    if(lastLoginElem) {
+        const now = new Date();
+        let hrs = now.getHours();
+        const mins = now.getMinutes().toString().padStart(2,'0');
+        const secs = now.getSeconds().toString().padStart(2,'0');
+        const ampm2 = hrs >= 12 ? 'PM' : 'AM';
+        hrs = hrs % 12 || 12;
+        lastLoginElem.innerText = `${hrs}:${mins}:${secs} ${ampm2}`;
     }
-  }
 
-  // Cargar datos
-  function loadData() {
-    const storedPosts = localStorage.getItem(POSTS_KEY);
-    if(storedPosts) posts = JSON.parse(storedPosts);
-    if(!posts || !posts.length) {
-      posts = [
-        { id: Date.now()+1, title: "👽 BIENVENIDX A LA NAVE", content: "✨ Este es un blog alien y2k con brillo cósmico. Todos pueden leer, solo el piloto con clave puede editar.<br><br>🔑 <strong>Clave: alienY2K2000s</strong><br><br>🛸 Explora y siente la vibra Y2K!", date: new Date().toLocaleString() + " 🛸" },
-        { id: Date.now()+2, title: "🛸 AVISTAMIENTO EN EL MALL", content: "Vi una criatura con crop top y plataformas, brillaba con neón. Definitivamente era de otro planeta. 🌟 #y2kalien", date: new Date().toLocaleString() + " ✨" },
-        { id: Date.now()+3, title: "🎀 LOOK DEL DÍA: ALIEN CORE", content: "Hoy llevo: mini mochila de hello kitty, choker de estrellas, pulseras de colores y mucho glitter. ✨💖", date: new Date().toLocaleString() + " 💫" }
-      ];
-      savePosts();
+    // ========== GALERIA DINAMICA con stickers alien + dino ==========
+    const galleryContainer = document.getElementById('galleryGrid');
+    const addGalleryBtn = document.getElementById('addGalleryPic');
+    const alienDinoStickers = ['👽🦖', '🦕👾', '💀🦴', '🦖🎀', '🐣🪐', '🦕📼', '🧬🦖', '🌋🦕', '👾🦴', '🦖💚', '🦕✨', '🧪🦖'];
+    function addNewGalleryItem() {
+        const randomSticker = alienDinoStickers[Math.floor(Math.random() * alienDinoStickers.length)];
+        const newDiv = document.createElement('div');
+        newDiv.className = 'gallery-item';
+        newDiv.innerText = randomSticker;
+        galleryContainer.appendChild(newDiv);
+        newDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    const storedSocial = localStorage.getItem(SOCIAL_KEY);
-    if(storedSocial) socialLinks = JSON.parse(storedSocial);
-    else {
-      socialLinks = [
-        { name: "🛸 instagram", url: "https://instagram.com/alieny2k" },
-        { name: "👾 tiktok", url: "https://tiktok.com/@alieny2k" },
-        { name: "✨ twitter", url: "https://twitter.com/alieny2k" }
-      ];
-      saveSocial();
-    }
-    const storedGallery = localStorage.getItem(GALLERY_KEY);
-    if(storedGallery) galleryItems = JSON.parse(storedGallery);
-    else {
-      galleryItems = [
-        { type: "img", value: "https://i.pinimg.com/474x/4b/8c/8d/4b8c8d0c7b3e3f8d9c2b4a5f6e7d8c9e.jpg", label: "alien purse" },
-        { type: "text", value: "👾🛸✨", label: "alien vibes" },
-        { type: "text", value: "💿🎀🌟", label: "y2k aesthetic" }
-      ];
-      saveGallery();
-    }
-    const storedMusic = localStorage.getItem(MUSIC_KEY);
-    musicUrl = storedMusic ? storedMusic : "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3";
-    const audioEl = document.getElementById('alienAudio');
-    if(audioEl) audioEl.src = musicUrl;
-  }
+    addGalleryBtn.addEventListener('click', addNewGalleryItem);
 
-  function savePosts() { localStorage.setItem(POSTS_KEY, JSON.stringify(posts)); }
-  function saveSocial() { localStorage.setItem(SOCIAL_KEY, JSON.stringify(socialLinks)); }
-  function saveGallery() { localStorage.setItem(GALLERY_KEY, JSON.stringify(galleryItems)); }
+    // ========== BLOG ENTRIES con dino ==========
+    const blogContainer = document.getElementById('blogEntriesContainer');
+    const addEntryBtn = document.getElementById('addEntryBtn');
+    const titlesList = ["👾 star latte review", "🦖 why i love t-rex in 2000s", "🛸 alien dinosaur shopping haul", "🎀 monster high meets jurassic", "✨ CRAVING FOSSILS AT 3AM", "🍒 MY TOP 10 dinos", "📼 clueless but make it jurassic", "🦕 dino gfx pack release"];
+    const bodiesList = ["went to the cosmic mall with a baby triceratops 🚀", "listening to kesha and roaring with dino", "NANA!! says: shopping for fossils is an intergalactic right", "just saw jurassic park for the 50th time, crying with dino", "i crave ingredients like fossil glitter", "my dino friend space is expanding, add me! +333 roar"];
+    function createNewEntry() {
+        const randomTitle = titlesList[Math.floor(Math.random() * titlesList.length)];
+        const randomBody = bodiesList[Math.floor(Math.random() * bodiesList.length)];
+        const newEntry = document.createElement('div');
+        newEntry.className = 'blog-entry';
+        const nowDate = new Date();
+        const dateStr = `${nowDate.toLocaleDateString()} ${nowDate.toLocaleTimeString()}`;
+        newEntry.innerHTML = `<div class="entry-title">✨ ${randomTitle} ✨</div><div class="entry-meta">🛸 posted: ${dateStr} — mood: dino energy</div><div>👽🦕 ${randomBody} #y2kdino #dalnnite</div>`;
+        blogContainer.prepend(newEntry);
+    }
+    addEntryBtn.addEventListener('click', createNewEntry);
 
-  function renderPosts() {
-    const postsContainer = document.getElementById('postsContainer');
-    if(!posts.length) { postsContainer.innerHTML = "<div>✨ no hay entradas aún ✨</div>"; return; }
-    let html = "";
-    [...posts].sort((a,b)=> new Date(b.date)-new Date(a.date)).forEach(p => {
-      html += `<div class="blog-post" data-id="${p.id}">
-        <div class="post-title">${escapeHtml(p.title)}</div>
-        <div class="post-meta">📅 ${escapeHtml(p.date)}</div>
-        <div class="post-content">${p.content}</div>`;
-      if(isAdmin) {
-        html += `<div style="margin-top:12px; display:flex; gap:10px;">
-          <button class="editPostBtn" data-id="${p.id}">✏️ editar</button>
-          <button class="deletePostBtn" data-id="${p.id}">🗑️ borrar</button>
-        </div>`;
-      }
-      html += `</div>`;
+    // ========== RANDOM TRACK ==========
+    const trackList = ["Britney - Toxic (Raptor remix)", "Ayesha Erotica - Dino Legend", "Kesha - Tik Tok (Jurassic)", "Lady Gaga - Just Dance (fossil mix)", "Dino Rock - Roar O'Clock"];
+    const nowPlayingSpan = document.getElementById('nowPlayingTrack');
+    const randomTrackBtn = document.getElementById('randomTrackBtn');
+    function randomTrack() { nowPlayingSpan.innerText = trackList[Math.floor(Math.random() * trackList.length)]; }
+    randomTrackBtn.addEventListener('click', randomTrack);
+    randomTrack();
+
+    // ========== COMENTARIOS ==========
+    const commentInput = document.getElementById('newCommentInput');
+    const addCommentBtn = document.getElementById('addCommentBtn');
+    const dynamicCommentsDiv = document.getElementById('dynamicComments');
+    let commentsList = ['⭐ "ur dino is so aesthetic"', '💖 "NANA!! ily let\'s go fossil hunting"'];
+    function renderComments() { dynamicCommentsDiv.innerHTML = commentsList.map(c => `<div style="border-bottom:1px dashed #3effc0; padding:4px 0;">👾 ${c}</div>`).join(''); }
+    addCommentBtn.addEventListener('click', () => {
+        if(commentInput.value.trim()) {
+            commentsList.push(`✨ "${commentInput.value.trim()}"`);
+            renderComments();
+            commentInput.value = "";
+        } else alert("write something dino-related!");
     });
-    postsContainer.innerHTML = html;
-    if(isAdmin) {
-      document.querySelectorAll('.editPostBtn').forEach(btn => {
-        btn.addEventListener('click', (e) => startEdit(parseInt(btn.dataset.id)));
-      });
-      document.querySelectorAll('.deletePostBtn').forEach(btn => {
-        btn.addEventListener('click', (e) => { if(confirm("💀 ¿borrar entrada alien?")) deletePost(parseInt(btn.dataset.id)); });
-      });
-    }
-  }
+    renderComments();
 
-  function startEdit(id) {
-    const post = posts.find(p=>p.id===id);
-    if(post) {
-      editModeId = id;
-      document.getElementById('postTitle').value = post.title;
-      document.getElementById('postContent').value = post.content;
-      document.getElementById('createPostBtn').innerText = "💾 guardar cambios";
-      document.getElementById('editFeedback').innerText = "✏️ editando entrada alien...";
-      document.getElementById('editorCard').style.display = "block";
-    }
-  }
-
-  function deletePost(id) {
-    posts = posts.filter(p=>p.id !== id);
-    savePosts();
-    renderPosts();
-    if(editModeId === id) resetEditor();
-  }
-
-  function saveOrUpdate() {
-    if(!isAdmin) return;
-    const title = document.getElementById('postTitle').value.trim();
-    const content = document.getElementById('postContent').value.trim() || "🛸 mensaje cósmico";
-    if(!title) { document.getElementById('editFeedback').innerText = "❌ necesitas un título"; return; }
-    if(editModeId !== null) {
-      const idx = posts.findIndex(p=>p.id===editModeId);
-      if(idx!==-1) {
-        posts[idx].title = title;
-        posts[idx].content = content;
-        posts[idx].date = new Date().toLocaleString() + " ✨editado";
-        savePosts();
-        document.getElementById('editFeedback').innerText = "✔️ entrada actualizada";
-        resetEditor();
-        renderPosts();
-      }
-    } else {
-      const newPost = { id: Date.now(), title, content, date: new Date().toLocaleString() + " 🛸" };
-      posts.unshift(newPost);
-      savePosts();
-      resetEditor();
-      renderPosts();
-      document.getElementById('editFeedback').innerText = "🚀 nueva entrada publicada!";
-      setTimeout(()=> { if(document.getElementById('editFeedback')) document.getElementById('editFeedback').innerText = ""; }, 2000);
-    }
-  }
-
-  function resetEditor() {
-    editModeId = null;
-    document.getElementById('postTitle').value = "";
-    document.getElementById('postContent').value = "";
-    document.getElementById('createPostBtn').innerText = "🛸 PUBLICAR";
-    document.getElementById('editFeedback').innerText = "";
-    if(!isAdmin) document.getElementById('editorCard').style.display = "none";
-  }
-
-  function renderSocial() {
-    const socialLinksDiv = document.getElementById('socialLinks');
-    socialLinksDiv.innerHTML = "";
-    socialLinks.forEach(link => {
-      const a = document.createElement('a');
-      a.href = link.url;
-      a.target = "_blank";
-      a.innerText = link.name;
-      socialLinksDiv.appendChild(a);
+    // ========== DINO ZONE INTERACTIVA ==========
+    let dinoName = "Spike";
+    const dinoNameSpan = document.getElementById('dinoName');
+    const renameBtn = document.getElementById('renameDinoBtn');
+    const dinoFactBox = document.getElementById('dinoFactBox');
+    const dinoRoarBtn = document.getElementById('dinoRoarBtn');
+    const petDinoBtn = document.getElementById('petDinoBtn');
+    const dinoEmoji = document.getElementById('dinoEmoji');
+    const facts = [
+        "Los tiranosaurios amaban los accesorios glitter 🌟",
+        "El dinosaurio favorito de NANA!! es el Velociraptor Y2K",
+        "Los aliens usaban dinosaurios como mascotas interestelares",
+        "Un estegosaurio puede bailar música de Britney 🦕",
+        "Los fósiles brillan en la oscuridad si los tocas con glitter alien",
+        "El compy más pequeño colecciona cartas de Monster High"
+    ];
+    renameBtn.addEventListener('click', () => {
+        let newName = prompt("Nombra a tu dinosaurio alien:", dinoName);
+        if(newName && newName.trim()) { dinoName = newName.trim(); dinoNameSpan.innerText = dinoName; }
     });
-    const socialEditPanel = document.getElementById('socialEditPanel');
-    if(isAdmin && socialEditPanel) {
-      socialEditPanel.style.display = "block";
-      document.getElementById('socialInput').value = socialLinks.map(l=>`${l.name}:${l.url}`).join(", ");
-    } else if(socialEditPanel) { socialEditPanel.style.display = "none"; }
-  }
+    function newFact() { dinoFactBox.innerText = facts[Math.floor(Math.random() * facts.length)]; }
+    document.getElementById('newDinoFactBtn').addEventListener('click', newFact);
+    dinoRoarBtn.addEventListener('click', () => { alert(`🦖 ${dinoName} ruge: "Y2K FOREVERRRR!! 🦕✨"`); dinoEmoji.style.transform = "scale(1.1)"; setTimeout(() => dinoEmoji.style.transform = "", 300); });
+    petDinoBtn.addEventListener('click', () => { alert(`🐾 Acaricias a ${dinoName} y suelta glitter fosilizado 💖`); dinoEmoji.style.animation = "none"; setTimeout(() => dinoEmoji.style.animation = "", 10); });
 
-  function saveSocialFromInput() {
-    const raw = document.getElementById('socialInput').value;
-    const pairs = raw.split(",").map(p=>p.trim());
-    const newLinks = [];
-    for(let pair of pairs) {
-      let [name, url] = pair.split(":");
-      if(name && url) newLinks.push({ name: name.trim(), url: url.trim() });
-    }
-    if(newLinks.length) socialLinks = newLinks;
-    saveSocial();
-    renderSocial();
-  }
-
-  function renderGallery() {
-    const galleryGrid = document.getElementById('galleryGrid');
-    galleryGrid.innerHTML = "";
-    galleryItems.forEach((item, idx) => {
-      const div = document.createElement('div');
-      div.className = "gallery-item";
-      if(item.type === "img") {
-        div.innerHTML = `<img src="${escapeHtml(item.value)}" style="width:100%; border-radius:20px;" onerror="this.src='https://placehold.co/120x120?text=👾'"><span>${escapeHtml(item.label)}</span>`;
-      } else {
-        div.innerHTML = `<div class="fake-img">${item.value}</div><span>${escapeHtml(item.label)}</span>`;
-      }
-      if(isAdmin) {
-        const delBtn = document.createElement('button');
-        delBtn.innerText = "❌";
-        delBtn.style.fontSize = "0.65rem";
-        delBtn.style.marginTop = "5px";
-        delBtn.onclick = () => { galleryItems.splice(idx,1); saveGallery(); renderGallery(); };
-        div.appendChild(delBtn);
-      }
-      galleryGrid.appendChild(div);
-    });
-    const galleryAdminPanel = document.getElementById('galleryAdminPanel');
-    if(isAdmin && galleryAdminPanel) galleryAdminPanel.style.display = "block";
-    else if(galleryAdminPanel) galleryAdminPanel.style.display = "none";
-  }
-
-  function addGalleryItem() {
-    let val = document.getElementById('newGalleryItem').value.trim();
-    if(!val) return;
-    let type = val.startsWith("http") ? "img" : "text";
-    galleryItems.push({ type, value: val, label: val.slice(0,20) });
-    saveGallery();
-    renderGallery();
-    document.getElementById('newGalleryItem').value = "";
-  }
-
-  function updateMusic() {
-    const newUrl = document.getElementById('musicUrlInput').value.trim();
-    if(newUrl) {
-      musicUrl = newUrl;
-      localStorage.setItem(MUSIC_KEY, musicUrl);
-      const audioEl = document.getElementById('alienAudio');
-      audioEl.src = musicUrl;
-      audioEl.load();
-      alert("🎵 Canción actualizada! ✨");
-    }
-  }
-
-  // ===== FUNCIONES DE ADMIN CORREGIDAS =====
-  function enableAdmin() {
-    isAdmin = true;
-    sessionStorage.setItem("alien_admin_mode", "1");
-    
-    const authBadge = document.getElementById('authStatusBadge');
-    const unlockBtn = document.getElementById('unlockBtn');
-    const lockBtn = document.getElementById('lockBtn');
-    const secretInput = document.getElementById('secretKey');
-    const editorCard = document.getElementById('editorCard');
-    const musicAdmin = document.getElementById('musicAdmin');
-    
-    authBadge.innerText = "👽 MODO COMANDANTE 👾 ✨";
-    authBadge.classList.add("admin");
-    unlockBtn.style.display = "none";
-    lockBtn.style.display = "inline-block";
-    secretInput.disabled = true;
-    editorCard.style.display = "block";
-    if(musicAdmin) musicAdmin.style.display = "block";
-    
-    renderPosts();
-    renderSocial();
-    renderGallery();
-  }
-
-  function disableAdmin() {
-    isAdmin = false;
-    sessionStorage.removeItem("alien_admin_mode");
-    
-    const authBadge = document.getElementById('authStatusBadge');
-    const unlockBtn = document.getElementById('unlockBtn');
-    const lockBtn = document.getElementById('lockBtn');
-    const secretInput = document.getElementById('secretKey');
-    const editorCard = document.getElementById('editorCard');
-    const musicAdmin = document.getElementById('musicAdmin');
-    
-    authBadge.innerText = "🔒 VISITANTE TERRÍCOLA";
-    authBadge.classList.remove("admin");
-    unlockBtn.style.display = "inline-block";
-    lockBtn.style.display = "none";
-    secretInput.disabled = false;
-    editorCard.style.display = "none";
-    if(musicAdmin) musicAdmin.style.display = "none";
-    
-    renderPosts();
-    renderSocial();
-    renderGallery();
-    resetEditor();
-  }
-
-  function attemptUnlock() {
-    const secretInput = document.getElementById('secretKey');
-    if(secretInput.value === SECRET_CODE) {
-      enableAdmin();
-      secretInput.value = "";
-    } else { 
-      alert("❌ Clave alien incorrecta\n\n💫 Clave correcta: alienY2K2000s"); 
-      secretInput.value = ""; 
-    }
-  }
-
-  function checkSession() {
-    if(sessionStorage.getItem("alien_admin_mode") === "1") {
-      enableAdmin();
-    } else {
-      disableAdmin();
-    }
-  }
-
-  function escapeHtml(str) { 
-    if(!str) return ''; 
-    return str.replace(/[&<>]/g, function(m){ 
-      if(m==='&') return '&amp;'; 
-      if(m==='<') return '&lt;'; 
-      if(m==='>') return '&gt;'; 
-      return m;
-    }); 
-  }
-
-  // ===== INICIALIZACIÓN =====
-  document.addEventListener('DOMContentLoaded', function() {
-    generateGlitter();
-    updateVisitorCounter();
-    loadData();
-    renderPosts();
-    renderSocial();
-    renderGallery();
-    checkSession();
-    
-    // Asignar eventos
-    document.getElementById('unlockBtn').onclick = attemptUnlock;
-    document.getElementById('lockBtn').onclick = disableAdmin;
-    document.getElementById('createPostBtn').onclick = saveOrUpdate;
-    document.getElementById('cancelEditBtn').onclick = resetEditor;
-    document.getElementById('saveSocialBtn').onclick = saveSocialFromInput;
-    document.getElementById('addGalleryBtn').onclick = addGalleryItem;
-    document.getElementById('updateMusicBtn').onclick = updateMusic;
-    
-    if(document.getElementById('musicUrlInput')) {
-      document.getElementById('musicUrlInput').value = musicUrl;
-    }
-  });
+    // ========== BOTONES ADICIONALES ==========
+    document.getElementById('fakeAddFriend')?.addEventListener('click', () => alert('👽🦖 ¡Dino y alien te agregan a favoritos!'));
+    document.getElementById('fakeBlockUser')?.addEventListener('click', () => alert('🚫 bloqueo interdimensional (pero a los dinosaurios no)'));
+    document.getElementById('viewAllFriends')?.addEventListener('click', (e) => { e.preventDefault(); alert('🦕 131 amigos + 30 dinosaurios jurásicos'); });
+    document.getElementById('fakeWebLink')?.addEventListener('click', (e) => { e.preventDefault(); alert('🦖 Video dino alien core - Y2K fossils'); });
+    document.querySelectorAll('.social-link').forEach(l => l.addEventListener('click', (e) => { e.preventDefault(); alert('💌 Dino social network!'); }));
+    document.addEventListener('click', (e) => { if(e.target.classList?.contains('gallery-item')) alert(`🦕✨ Galaxia Dino: ${e.target.innerText} - poder jurásico`); });
+    console.log("🚀 BLOG ALIEN + DINO Y2K - INTEGRADO CON FÓSILES Y RUGIDOS");
 </script>
 </body>
 </html>
